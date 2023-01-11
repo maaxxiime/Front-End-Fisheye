@@ -19,14 +19,14 @@ function getId() {
 
           const picture = `assets/Sample/photographersIdPhotos/${photographer.portrait}`;
           const section = document.querySelector(".photograph-header");
-          const divFlex = document.createElement("div");
+          const divCollumn = document.querySelector(".divCollumn")
           const title = document.createElement("h1");
           const localisation = document.createElement("p");
           const tagLine = document.createElement("p");
           const img = document.createElement("img");
 
 
-          divFlex.setAttribute('class', "divCollumn")
+          img.setAttribute('alt', photographer.name)
 
 
           title.textContent = photographer.name;
@@ -35,10 +35,9 @@ function getId() {
           img.setAttribute("src", picture);
 
 
-          section.appendChild(divFlex);
-          divFlex.appendChild(title);
-          divFlex.appendChild(localisation);
-          divFlex.appendChild(tagLine);
+          divCollumn.appendChild(title);
+          divCollumn.appendChild(localisation);
+          divCollumn.appendChild(tagLine);
           section.appendChild(img);
 
           return photographer;
