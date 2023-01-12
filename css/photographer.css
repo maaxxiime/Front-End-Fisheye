@@ -9,7 +9,6 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-
 }
 .photograph-header img {
   width: 200px;
@@ -51,6 +50,36 @@
 .contact_button:hover {
   background-color: #db8876;
   color: #000000;
+}
+
+.realisation {
+  margin: 30px 5%;
+}
+
+.realisation label {
+  font-weight: 600;
+}
+
+.realisation select {
+  background-color: #901C1C;
+  color: white;
+  border: none;
+  font-size: 16px;
+}
+
+.realisation option {
+  height: 20px;
+}
+
+.gallery img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.gallery video {
+  width: 400px;
+  height: 400px;
 }
 
 .modal {

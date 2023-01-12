@@ -1,4 +1,4 @@
-function getId() {
+function userCardDom() {
   //récupérer le params passé en url
   const params = window.location.href.split("=")[1];
   const ID = parseInt(params);
@@ -45,4 +45,4 @@ function getId() {
       });
     });
 }
-getId();
+userCardDom();
