@@ -19,7 +19,7 @@ function photographerFactory(data) {
     // Set attribute
     article.setAttribute('aria-label', `Photographe ${name}`)
     link.setAttribute("alt", name);
-    link.setAttribute("href", `./photographer.html?id=${id}`)
+    link.setAttribute("href", `./photographer.html?id=${id}?name=${name}`)
     img.setAttribute("src", picture);
     img.setAttribute("alt", name);
 
