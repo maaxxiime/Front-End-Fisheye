@@ -24,9 +24,9 @@ function video(data) {
   console.log(video)
 
   function display() {
-    const video = document.createElement("video");
-    video.setAttribute("src", `assets/Sample/${params}/${video}`);
-    return video;
+    const videos = document.createElement("video");
+    videos.setAttribute("src", `assets/Sample/${params}/${video}`);
+    return videos;
   }
   return { photographerId, id, title, video, likes, date, price, display };
 }

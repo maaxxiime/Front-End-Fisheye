@@ -4,7 +4,7 @@ async function userCardDom() {
   const ID = parseInt(params);
 
   //créer une variable user null
-  let user = null;
+  var user = null;
   // créer un tableau media vide
   let medias = [];
 
@@ -40,6 +40,7 @@ async function userCardDom() {
 
     const divCollumn = document.getElementById("divCollumn");
     const photographHeader = document.getElementById("photograph-header");
+    const contactName = document.getElementById('contact-name')
     const name = document.createElement("h1");
     const localisation = document.createElement("p");
     const tagline = document.createElement("p");
@@ -49,12 +50,14 @@ async function userCardDom() {
     localisation.textContent = `${user.city}, ${user.country}`;
     tagline.textContent = user.tagline;
     img.setAttribute("src", picture);
+    contactName.textContent = user.name
 
     divCollumn.appendChild(name);
     divCollumn.appendChild(localisation);
     divCollumn.appendChild(tagline);
     photographHeader.appendChild(img);
   }
+  
   await getUser();
   displayMedia();
   await displayUser();
