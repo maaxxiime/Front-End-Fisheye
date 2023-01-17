@@ -35,7 +35,7 @@
 
       <section class="realisation" id="realisation">
         <label for="filter">Trier par</label>
-        <select name="filter" id="filter">
+        <select name="filter" id="filter" aria-label="order by">
           <option value="popularite">Popularité</option>
           <option value="date">Date</option>
           <option value="titre">Titre</option>
@@ -51,23 +51,23 @@
             <h2>Contactez-moi</h2>
             <h2 id="contact-name"></h2>
           </div>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close contact form" />
         </header>
         <form method="get" action="photographer.html" id="form">
           <div>
             <label for="prenom">Prénom</label>
-            <input id="prenom" type="text"/>
+            <input id="prenom" type="text" aria-label="First name"/>
 
             <label for="nom">Nom</label>
-            <input id="nom" type="text"/>
+            <input id="nom" type="text" aria-label="Last name"/>
 
             <label for="email">Email</label>
-            <input id="email" type="email"/>
+            <input id="email" type="email" aria-label="Email"/>
 
             <label for="message">Votre message</label>
-            <textarea id="message" cols="101" rows="10"></textarea>
+            <textarea id="message" cols="101" rows="10" aria-label="Your message"></textarea>
           </div>
-          <button class="contact_button" id="contact_button" type="submit">Envoyer</button>
+          <button class="contact_button" id="contact_button" type="submit" aria-label="Send">Envoyer</button>
         </form>
       </div>
     </div>

@@ -21,10 +21,13 @@ function image(data) {
     divBottom.setAttribute("class", "div-bottom");
     img.setAttribute("src", `assets/Sample/${params}/${image}`);
     img.setAttribute("class", "photograph-image");
+    img.setAttribute("alt", title);
     titleImage.textContent = title;
     likesCount.textContent = likes;
     heart.setAttribute("src", "./assets/icons/heart-solid.svg");
     heart.setAttribute("class", "heart-image");
+    heart.setAttribute("alt", "likes");
+
 
 
     article.appendChild(img);
@@ -41,7 +44,6 @@ function image(data) {
 function video(data) {
   const { photographerId, id, title, video, likes, date, price } = data;
   const params = window.location.href.split("=")[2].split("%")[0];
-  console.log(video)
 
   function display() {
     const article = document.createElement('article');

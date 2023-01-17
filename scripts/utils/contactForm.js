@@ -1,4 +1,10 @@
-const form = document.getElementById('form')
+// Accessibilité
+const modal = document.getElementById("contact_modal");
+const params = window.location.href.split("=")[2].split("?")[0].replace("%20", " ").replace("%20", " ");
+modal.setAttribute('aria-label', `contact me ${params}`)
+
+
+
 
 function displayModal() {
     const modal = document.getElementById("contact_modal");
@@ -11,6 +17,8 @@ function closeModal() {
 }
 
 
+
+const form = document.getElementById('form')
 form.addEventListener("submit", function sendForm(e){
     e.preventDefault();
     

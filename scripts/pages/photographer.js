@@ -50,6 +50,7 @@ async function userCardDom() {
     localisation.textContent = `${user.city}, ${user.country}`;
     tagline.textContent = user.tagline;
     img.setAttribute("src", picture);
+    img.setAttribute("alt", user.name);
     contactName.textContent = user.name
 
     divCollumn.appendChild(name);
