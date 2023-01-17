@@ -199,4 +199,36 @@ form input {
   height: 68px;
   border: none;
   border-radius: 5px;
+  font-size: 30px;
+}
+
+form textarea {
+  font-size: 30px;
+  width: 100%;
+  height: 160px;
+}
+
+.photograph-infos {
+  position: fixed;
+  bottom: -10px;
+  right: 2%;
+  width: 376px;
+  height: 89px;
+  background-color: #DB8876;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 22px;
+}
+.photograph-infos div {
+  display: flex;
+}
+
+.like-count {
+ margin: 0 5px 0 0;
+}
+
+.heart-count {
+width: 22px;
 }
