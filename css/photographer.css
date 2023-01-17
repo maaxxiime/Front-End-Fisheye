@@ -71,15 +71,63 @@
   height: 20px;
 }
 
-.gallery img {
-  width: 400px;
-  height: 400px;
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gallery article{
+  height: 350px;
+  width: 350px;
+  margin: 10px 20px;
+}
+
+.photograph-image {
+  height: 300px;
+  width: 350px;
+  border-radius: 5px;
   object-fit: cover;
 }
 
-.gallery video {
-  width: 400px;
-  height: 400px;
+.photograph-video {
+  height: 300px;
+  width: 350px;
+  border-radius: 5px;
+}
+
+.div-bottom {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.div-bottom p {
+  color: #901C1C;
+}
+
+.div-bottom p:nth-child(1){
+  font-size: 20px;
+  position: absolute;
+  margin: 0;
+  top: 1px;
+  left: 5px;
+}
+
+.div-bottom p:nth-child(2){
+  font-size: 20px;
+  margin: 0;
+  position: absolute;
+  top: 1px;
+  right: 38px;
+}
+
+.heart-image {
+  width: 18px;
+  margin: 0 10px 0 0;
+  filter: invert(14%) sepia(33%) saturate(5730%) hue-rotate(349deg) brightness(105%) contrast(89%);
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 .contact_modal {
   position: fixed;
