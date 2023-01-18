@@ -4,7 +4,7 @@ async function userCardDom() {
   const ID = parseInt(params);
 
   //créer une variable user null
-  var user = null;
+  // var user = null;
   // créer un tableau media vide
   let medias = [];
 
@@ -12,9 +12,9 @@ async function userCardDom() {
     // fetch la data
     const data = await fetch("../data/photographers.json");
     const resultat = await data.json();
-    const photographers = resultat.photographers;
+    // const photographers = resultat.photographers;
     const mediasData = resultat.media;
-    user = photographers.filter((photographer) => photographer.id === ID)[0];
+    // user = photographers.filter((photographer) => photographer.id === ID)[0];
     const mediasUser = mediasData.filter(
       (media) => media.photographerId === ID
     );
