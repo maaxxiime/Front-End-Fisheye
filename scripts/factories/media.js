@@ -41,9 +41,8 @@ function image(data) {
         likes += 1;
         likesCount.textContent = likes;
         maxLike = 1;
-        
       } else if (maxLike === 1) {
-        console.log("deja like")
+        console.log("déjà liké")
       }
     });
 

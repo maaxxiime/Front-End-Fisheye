@@ -42,6 +42,5 @@ async function displayInfos() {
     divLike.appendChild(likesCount)
     divLike.appendChild(heart)
     divPrice.appendChild(price)
-
 }
 displayInfos()
