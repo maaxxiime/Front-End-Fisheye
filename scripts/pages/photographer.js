@@ -1,4 +1,6 @@
 async function userCardDom() {
+  // récupère le select
+  const select = document.getElementById("filter");
   //récupérer le params passé en url
   const params = window.location.href.split("=")[1].split("?")[0];
   const ID = parseInt(params);
@@ -9,7 +11,6 @@ async function userCardDom() {
   let medias = [];
 
   async function getUser() {
-    const select = document.getElementById("filter");
     // fetch la data
     const data = await fetch("../data/photographers.json");
     const resultat = await data.json();
@@ -17,19 +18,6 @@ async function userCardDom() {
     const mediasData = resultat.media;
     // user = photographers.filter((photographer) => photographer.id === ID)[0];
     const mediasUser = mediasData.filter((media) => media.photographerId === ID);
-    
-    select.addEventListener("change", function filter() {
-      if (select.selectedIndex === 0) {
-        console.log("popularité");
-        medias.sort((a,b) => a.likes - b.likes)
-      } else if (select.selectedIndex === 1) {
-        console.log("date");
-        medias.sort((a,b) => new Date(a.date) - new Date (b.date))
-      } else {
-        console.log("titre");
-        medias.sort()
-      }
-    });
     
     mediasUser.forEach((media) => {
       let _media = factoryMedia(media);
@@ -74,6 +62,28 @@ async function userCardDom() {
     photographHeader.appendChild(img);
   }
 
+  select.addEventListener("change", function filter(e) {
+    const critere = e.target.value;
+    filterByCritere(critere)
+    console.log(medias)
+    const gallery = document.getElementById("gallery");
+    gallery.innerHTML = ""
+    displayMedia()
+
+  });
+
+  function filterByCritere(critere) {
+    if(critere == "popularite") {
+      medias.sort((a, b) => b.likes - a.likes)
+    } else if(critere == "date") {
+      medias.sort((a, b)=> new Date(b.date) - new Date(a.date))
+    } else if(critere == "titre") {
+      medias.sort((a, b)=> new Date(b.date) - new Date(a.date))
+    }
+  }
+
+
+  
   await getUser();
   displayMedia();
   await displayUser();

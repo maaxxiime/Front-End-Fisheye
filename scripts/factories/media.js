@@ -34,6 +34,7 @@ function image(data) {
     divBottom.appendChild(likesCount);
     divBottom.appendChild(heart);
 
+    // faire un boolean plutot que ça
     let maxLike = 0
     heart.addEventListener("click", function like() {
 
