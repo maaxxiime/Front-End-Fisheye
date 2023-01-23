@@ -114,6 +114,7 @@ function video(data) {
 
     divBottom.setAttribute("class", "div-bottom");
     videos.setAttribute("src", `assets/Sample/${params}/${video}`);
+    videos.setAttribute("controls", true);
     videos.setAttribute("class", "photograph-video");
     titleImage.textContent = title;
     likesCount.textContent = likes;
