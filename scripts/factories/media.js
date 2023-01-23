@@ -6,6 +6,9 @@ function factoryMedia(data) {
   }
 }
 
+let totalLike = null
+const totalLikesCount = document.createElement("p");
+
 async function displayInfos() {
 
   const param = window.location.href.split("=")[1].split("?")[0];
@@ -26,13 +29,12 @@ async function displayInfos() {
       likesArray.push(likes)
   }
   
-  const totalLike = likesArray.reduce((a, b) => a + b)
+  totalLike = likesArray.reduce((a, b) => a + b)
 
   const body = document.getElementById('body')
   const aside = document.createElement("aside");
   const divLike = document.createElement("div");
   const divPrice = document.createElement("div");
-  const totalLikesCount = document.createElement("p");
   const heart = document.createElement("img");
   const price = document.createElement("p");
 
@@ -84,12 +86,11 @@ function image(data) {
     let maxLike = false
     heart.addEventListener("click", function like() {
 
-      totalLike += 1;
-      totalLikesCount.textContent = totalLike
-
       if(maxLike === false) {
         likes += 1;
         likesCount.textContent = likes;
+        totalLike += 1;
+        totalLikesCount.textContent = totalLike
         maxLike = true;
       } else if (maxLike === true) {
         console.log("déjà liké")
@@ -130,12 +131,11 @@ function video(data) {
     let maxLike = false;
     heart.addEventListener("click", function like() {
 
-      totalLike += 1;
-      totalLikesCount.textContent = totalLike
-
       if(maxLike === false) {
         likes += 1;
         likesCount.textContent = likes;
+        totalLike += 1;
+        totalLikesCount.textContent = totalLike
         maxLike = true;
         
       } else if (maxLike === true) {
