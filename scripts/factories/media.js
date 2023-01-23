@@ -6,6 +6,53 @@ function factoryMedia(data) {
   }
 }
 
+async function displayInfos() {
+
+  const param = window.location.href.split("=")[1].split("?")[0];
+  const ID = parseInt(param);
+  
+  
+  const data = await fetch("../data/photographers.json");
+  const resultat = await data.json();
+  const photographers = resultat.photographers;
+  const mediasData = resultat.media;
+  const user = photographers.filter((photographer) => photographer.id === ID)[0];
+  const mediasUser = mediasData.filter((media) => media.photographerId === ID);
+
+  let likesArray = []
+
+  for(let i = 0 ; i < mediasUser.length ; i++) {
+      let likes = mediasUser[i].likes
+      likesArray.push(likes)
+  }
+  
+  const totalLike = likesArray.reduce((a, b) => a + b)
+
+  const body = document.getElementById('body')
+  const aside = document.createElement("aside");
+  const divLike = document.createElement("div");
+  const divPrice = document.createElement("div");
+  const totalLikesCount = document.createElement("p");
+  const heart = document.createElement("img");
+  const price = document.createElement("p");
+
+  aside.setAttribute("class", "photograph-infos");
+  totalLikesCount.textContent = totalLike;
+  totalLikesCount.setAttribute("class", "like-count");
+  heart.setAttribute("src", "./assets/icons/heart-solid.svg")
+  heart.setAttribute("class", "heart-count");
+  price.textContent = `${user.price}€ / jour`
+
+  body.appendChild(aside)
+  aside.appendChild(divLike)
+  aside.appendChild(divPrice)
+  divLike.appendChild(totalLikesCount)
+  divLike.appendChild(heart)
+  divPrice.appendChild(price)
+
+}
+displayInfos()
+
 function image(data) {
   let { photographerId, id, title, image, likes, date, price } = data;
   const params = window.location.href.split("=")[2].split("%")[0];
@@ -34,19 +81,20 @@ function image(data) {
     divBottom.appendChild(likesCount);
     divBottom.appendChild(heart);
 
-    // faire un boolean plutot que ça
-    let maxLike = 0
+    let maxLike = false
     heart.addEventListener("click", function like() {
 
-      if(maxLike === 0) {
+      totalLike += 1;
+      totalLikesCount.textContent = totalLike
+
+      if(maxLike === false) {
         likes += 1;
         likesCount.textContent = likes;
-        maxLike = 1;
-      } else if (maxLike === 1) {
+        maxLike = true;
+      } else if (maxLike === true) {
         console.log("déjà liké")
       }
     });
-
     return article;
   }
   return { photographerId, id, title, image, likes, date, price, display };
@@ -78,16 +126,19 @@ function video(data) {
     divBottom.appendChild(likesCount);
     divBottom.appendChild(heart);
 
-    let maxLike = 0
+    let maxLike = false;
     heart.addEventListener("click", function like() {
 
-      if(maxLike === 0) {
+      totalLike += 1;
+      totalLikesCount.textContent = totalLike
+
+      if(maxLike === false) {
         likes += 1;
         likesCount.textContent = likes;
-        maxLike = 1;
+        maxLike = true;
         
-      } else if (maxLike === 1) {
-        console.log("deja like")
+      } else if (maxLike === true) {
+        console.log("déjà liké")
       }
     });
 
