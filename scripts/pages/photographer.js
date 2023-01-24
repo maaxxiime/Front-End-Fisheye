@@ -65,7 +65,6 @@ async function userCardDom() {
   select.addEventListener("change", function filter(e) {
     const critere = e.target.value;
     filterByCritere(critere)
-    console.log(medias)
     const gallery = document.getElementById("gallery");
     gallery.innerHTML = ""
     displayMedia()
@@ -78,7 +77,7 @@ async function userCardDom() {
     } else if(critere == "date") {
       medias.sort((a, b)=> new Date(b.date) - new Date(a.date))
     } else if(critere == "titre") {
-      medias.sort((a, b)=> new Date(b.date) - new Date(a.date))
+      medias.sort((a, b)=> a.title.localeCompare(b.title))
     }
   }
 

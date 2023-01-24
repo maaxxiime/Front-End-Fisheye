@@ -1,9 +1,7 @@
 // Accessibilité
 const modal = document.getElementById("contact_modal");
 const params = window.location.href.split("=")[2].split("?")[0].replace("%20", " ").replace("%20", " ");
-modal.setAttribute('aria-label', `contact me ${params}`)
-
-
+modal.setAttribute('aria-label', `contact me ${params}`);
 
 
 function displayModal() {
@@ -11,11 +9,24 @@ function displayModal() {
 	modal.style.display = "block";
 }
 
-function closeModal() {
+const closeBtn = document.getElementById('close-btn');
+
+closeBtn.addEventListener("click", function closeModal(){
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
-}
 
+})
+
+closeBtn.addEventListener("keypress", (e) => {
+
+    const keyName = e.key;
+    console.log(keyName)
+    if (keyName === 'Enter') {
+        const modal = document.getElementById("contact_modal");
+        modal.style.display = "none";
+    }
+
+})
 
 
 const form = document.getElementById('form')
