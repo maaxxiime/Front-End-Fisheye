@@ -1,0 +1,6 @@
+- au clic sur une photographie, la modale s'ouvre
+- la modale contient une fleche gauche et droite pour slider à gauche ou à droite et une croix pour fermer la modale
+- au clic sur une image (pour ouvrir la modale) on récupére l'id de l'image clické 
+- l'image s'affiche en grand dans une balise img et met en paramètre l'id clické
+- pour slider, on récupére le tableau des medias qui fait l'affichage selon le trie
+- si on clic à droite, ça affiche l'image suivante et si on clic à gauche, ça affiche l'image précédente du tableau medias
