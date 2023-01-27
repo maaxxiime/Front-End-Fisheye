@@ -4,6 +4,7 @@ async function userCardDom() {
   //récupérer le params passé en url
   const params = window.location.href.split("=")[1].split("?")[0];
   const ID = parseInt(params);
+  const gallery = document.getElementById('gallery');
 
   //créer une variable user null
   // var user = null;
@@ -81,10 +82,25 @@ async function userCardDom() {
     }
   }
 
+  gallery.addEventListener("click", function(e){
+    // variable global avec la position (index) de l'element clické
+    // mettre la position de l'index dans les data-index
 
-  
+    if(e.target.nodeName == "IMG"){
+      console.log(e.target)
+        // e.target.src pour recupèrer la source
+        // if IMG créer une balise img 
+    }
+    if(e.target.nodeName == "VIDEO") {
+        // e.target.src pour recupèrer la source
+        // if VIDEO créer une balise video
+
+    }
+  })
+
   await getUser();
   displayMedia();
   await displayUser();
 }
 userCardDom();
+// regarder propagaton & bubling
