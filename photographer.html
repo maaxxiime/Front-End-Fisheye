@@ -11,7 +11,8 @@
     <title>Fisheye - photographe</title>
   </head>
   <body id="body">
-    <header>
+    <header role="navigation" id="header">
+      <span class="hidden">page du photographe</span>
       <a href="./index.html">
         <img
           src="assets/images/logo.png"
@@ -55,17 +56,17 @@
         </header>
         <form method="get" action="photographer.html" id="form">
           <div>
-            <label for="prenom">Prénom</label>
-            <input id="prenom" type="text" aria-label="First name"/>
+            <label for="prenom" id="First-name">Prénom</label>
+            <input id="prenom" type="text" aria-labelledby="First-name" required aria-required="true"/>
 
-            <label for="nom">Nom</label>
-            <input id="nom" type="text" aria-label="Last name"/>
+            <label for="nom" id="Last-name">Nom</label>
+            <input id="nom" type="text" aria-labelledby="Last-name" required aria-required="true"/>
 
-            <label for="email">Email</label>
-            <input id="email" type="email" aria-label="Email"/>
+            <label for="email" id="Email">Email</label>
+            <input id="email" type="email" aria-labelledby="Email" required aria-required="true"/>
 
-            <label for="message">Votre message</label>
-            <textarea id="message" cols="101" rows="10" aria-label="Your message"></textarea>
+            <label for="message" id="Your-message">Votre message</label>
+            <textarea id="message" cols="101" rows="10" aria-labelledby="Your-message" required aria-required="true"></textarea>
           </div>
           <button class="contact_button" id="contact_button" type="submit" aria-label="Send">Envoyer</button>
         </form>
