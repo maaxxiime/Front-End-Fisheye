@@ -72,6 +72,7 @@ function image(data) {
     img.setAttribute("src", `assets/Sample/${params}/${image}`);
     img.setAttribute("class", "photograph-image");
     img.setAttribute("alt", title);
+    img.style.cursor = "pointer";
     titleImage.textContent = title;
     likesCount.textContent = likes;
     heart.setAttribute("src", "./assets/icons/heart-solid.svg");
@@ -119,6 +120,7 @@ function video(data) {
     videos.setAttribute("src", `assets/Sample/${params}/${video}`);
     videos.setAttribute("controls", true);
     videos.setAttribute("class", "photograph-video");
+    videos.style.cursor = "pointer"
     titleImage.textContent = title;
     likesCount.textContent = likes;
     heart.setAttribute("src", "./assets/icons/heart-solid.svg");

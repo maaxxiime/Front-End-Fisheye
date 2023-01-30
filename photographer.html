@@ -24,7 +24,11 @@
 
     <main id="main">
       <div class="photograph-header" id="photograph-header">
-        <div class="divCollumn" aria-label="description du photographe" id="divCollumn"></div>
+        <div
+          class="divCollumn"
+          aria-label="description du photographe"
+          id="divCollumn"
+        ></div>
         <button
           class="contact_button"
           onclick="displayModal()"
@@ -46,17 +50,14 @@
       </section>
     </main>
 
-
-
-    <div class="modal-slider">
-      <button>previous</button>
-      <div>
+    <div class="modal-slider" id="modal-slider">
+      <img src="./assets/icons/chevron-left-solid.svg" alt="previous image" class="previous button" id="previous"></img>
+      <div class="container-slider" id="container-slider">
         <!-- soit img soit vidéo ici -->
       </div>
-      <button> Next</button>
+      <img src="./assets/icons/chevron-right-solid.svg" alt="next image" class="next button" id="next"></img>
+      <img src="./assets/icons/xmark-solid.svg" alt="close" class="close button" id="close"></img>
     </div>
-
-
 
     <div id="contact_modal" class="contact_modal">
       <div class="modal">
@@ -65,32 +66,65 @@
             <h2>Contactez-moi</h2>
             <h2 id="contact-name"></h2>
           </div>
-            <img tabindex="0" src="assets/icons/close.svg" id="close-btn" alt="Close contact form"/>
+          <img
+            tabindex="0"
+            src="assets/icons/close.svg"
+            id="close-btn"
+            alt="Close contact form"
+          />
         </header>
         <form method="get" action="photographer.html" id="form">
           <div>
             <label for="prenom" id="First-name">Prénom</label>
-            <input id="prenom" type="text" aria-labelledby="First-name" required aria-required="true"/>
+            <input
+              id="prenom"
+              type="text"
+              aria-labelledby="First-name"
+              required
+              aria-required="true"
+            />
 
             <label for="nom" id="Last-name">Nom</label>
-            <input id="nom" type="text" aria-labelledby="Last-name" required aria-required="true"/>
+            <input
+              id="nom"
+              type="text"
+              aria-labelledby="Last-name"
+              required
+              aria-required="true"
+            />
 
             <label for="email" id="Email">Email</label>
-            <input id="email" type="email" aria-labelledby="Email" required aria-required="true"/>
+            <input
+              id="email"
+              type="email"
+              aria-labelledby="Email"
+              required
+              aria-required="true"
+            />
 
             <label for="message" id="Your-message">Votre message</label>
-            <textarea id="message" cols="101" rows="10" aria-labelledby="Your-message" required aria-required="true"></textarea>
+            <textarea
+              id="message"
+              cols="101"
+              rows="10"
+              aria-labelledby="Your-message"
+              required
+              aria-required="true"
+            ></textarea>
           </div>
-          <button class="contact_button" id="contact_button" type="submit" aria-label="Send">Envoyer</button>
+          <button
+            class="contact_button"
+            id="contact_button"
+            type="submit"
+            aria-label="Send"
+          >
+            Envoyer
+          </button>
         </form>
       </div>
     </div>
 
-
-
-
     <script src="scripts/factories/media.js"></script>
-    <script src="scripts/factories/realisation.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
   </body>

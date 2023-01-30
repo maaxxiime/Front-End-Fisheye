@@ -3,9 +3,6 @@ async function getPhotographers() {
     return fetch("../data/photographers.json")
     .then((res) => res.json())
     .then((data) => data);
-
-    //utiliser = await
-    
 }
 
 async function displayData(photographers) {
