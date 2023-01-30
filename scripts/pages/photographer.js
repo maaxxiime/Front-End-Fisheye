@@ -85,7 +85,9 @@ async function userCardDom() {
 
   gallery.addEventListener("click", function (e) {
     const modalSlider = document.getElementById("modal-slider");
-    modalSlider.style.display = "flex";
+    if (e.target.alt) {
+      modalSlider.style.display = "flex";
+    }
 
     // variable global avec la position (index) de l'element clické
     const dataImage = [];
