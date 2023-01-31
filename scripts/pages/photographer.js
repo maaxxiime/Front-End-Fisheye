@@ -3,6 +3,7 @@ async function userCardDom() {
   const select = document.getElementById("filter");
   //récupérer le params passé en url
   const params = window.location.href.split("=")[1].split("?")[0];
+  const name = window.location.href.split("=")[2].split("%")[0];
   const ID = parseInt(params);
   const gallery = document.getElementById("gallery");
 
@@ -83,7 +84,7 @@ async function userCardDom() {
     }
   }
 
-  gallery.addEventListener("click", function (e) {
+  gallery.addEventListener("click", function(e) {
     const modalSlider = document.getElementById("modal-slider");
     if (e.target.alt) {
       modalSlider.style.display = "flex";
@@ -94,10 +95,9 @@ async function userCardDom() {
     medias.forEach((media) => {
       dataImage.push(media.image);
     });
-    const dataName = e.target.currentSrc.split("/")[6];
-    const index = dataImage.indexOf(dataName);
-
-    // mettre la position de l'index dans les data-index
+    const dataName = e.target.src.split("/")[6];
+    let index = dataImage.indexOf(dataName);
+    let newSrc = null
 
     const src = e.target.src;
     const container = document.getElementById("container-slider");
@@ -108,12 +108,12 @@ async function userCardDom() {
     container.appendChild(title);
 
     if (e.target.nodeName == "IMG") {
-      const img = document.createElement("img");
+      var img = document.createElement("img");
       img.setAttribute("src", src);
       container.appendChild(img);
     }
     if (e.target.nodeName == "VIDEO") {
-      const video = document.createElement("video");
+      var video = document.createElement("video");
       video.setAttribute("src", src);
       container.appendChild(video);
     }
@@ -123,7 +123,35 @@ async function userCardDom() {
       modalSlider.style.display = "none";
       container.innerHTML = "";
     });
+
+    const previous = document.getElementById("previous");
+    previous.addEventListener("click", function previous(){
+      index -= 1;
+      newSrc = dataImage[index];
+      container.innerHTML = "";
+      img.setAttribute("src", `./assets/Sample/${name}/${newSrc}`);
+      container.appendChild(img);
+      title.textContent = "";
+      title.textContent = alt;
+      container.appendChild(title);
+    })
+
+    const next = document.getElementById("next");
+    next.addEventListener("click", function next(){
+      index += 1;
+      newSrc = dataImage[index];
+      container.innerHTML = "";
+      img.setAttribute("src", `./assets/Sample/${name}/${newSrc}`);
+      container.appendChild(img);
+      title.textContent = "";
+      title.textContent = alt;
+      container.appendChild(title);
+    })
   });
+  
+  
+  
+
 
   await getUser();
   displayMedia();
