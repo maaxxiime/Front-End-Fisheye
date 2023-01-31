@@ -3,6 +3,7 @@ async function userCardDom() {
   const select = document.getElementById("filter");
   //récupérer le params passé en url
   const params = window.location.href.split("=")[1].split("?")[0];
+  // name me sert à trouver la bonne source lors d'un changement d'image au slider
   const name = window.location.href.split("=")[2].split("%")[0];
   const ID = parseInt(params);
   const gallery = document.getElementById("gallery");
@@ -86,15 +87,20 @@ async function userCardDom() {
 
   gallery.addEventListener("click", function(e) {
     const modalSlider = document.getElementById("modal-slider");
-    if (e.target.alt) {
+    if (e.target.nodeName == "IMG" || e.target.nodeName == "VIDEO") {
       modalSlider.style.display = "flex";
     }
 
-    // variable global avec la position (index) de l'element clické
     const dataImage = [];
+    const dataVideo = [];
+    const dataAlt = [];
     medias.forEach((media) => {
       dataImage.push(media.image);
+      dataVideo.push(media.video);
+      dataAlt.push(media.title);
     });
+
+    // variable global avec la position (index) de l'element clické
     const dataName = e.target.src.split("/")[6];
     let index = dataImage.indexOf(dataName);
     let newSrc = null
@@ -115,6 +121,8 @@ async function userCardDom() {
     if (e.target.nodeName == "VIDEO") {
       var video = document.createElement("video");
       video.setAttribute("src", src);
+      video.setAttribute("autoplay", true)
+      video.setAttribute("controls", true)
       container.appendChild(video);
     }
 
@@ -127,24 +135,30 @@ async function userCardDom() {
     const previous = document.getElementById("previous");
     previous.addEventListener("click", function previous(){
       index -= 1;
+      if(index === -1){
+        index = dataImage.length -1;
+      }
       newSrc = dataImage[index];
       container.innerHTML = "";
       img.setAttribute("src", `./assets/Sample/${name}/${newSrc}`);
       container.appendChild(img);
       title.textContent = "";
-      title.textContent = alt;
+      title.textContent = dataAlt[index];
       container.appendChild(title);
     })
 
     const next = document.getElementById("next");
     next.addEventListener("click", function next(){
       index += 1;
+      if(index === dataImage.length){
+        index = 0
+      }
       newSrc = dataImage[index];
       container.innerHTML = "";
       img.setAttribute("src", `./assets/Sample/${name}/${newSrc}`);
       container.appendChild(img);
       title.textContent = "";
-      title.textContent = alt;
+      title.textContent = dataAlt[index];
       container.appendChild(title);
     })
   });

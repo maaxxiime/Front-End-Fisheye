@@ -280,7 +280,12 @@ width: 22px;
 .container-slider img {
   width: 70%;
   height: 85vh;
-  object-fit: cover;
+  object-fit: contain;
+}
+
+.container-slider video {
+  width: 70%;
+  height: 85vh;
 }
 
 .title-slider {

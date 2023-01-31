@@ -119,6 +119,7 @@ function video(data) {
     divBottom.setAttribute("class", "div-bottom");
     videos.setAttribute("src", `assets/Sample/${params}/${video}`);
     videos.setAttribute("controls", true);
+    videos.setAttribute("alt", title);
     videos.setAttribute("class", "photograph-video");
     videos.style.cursor = "pointer"
     titleImage.textContent = title;
