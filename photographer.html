@@ -75,42 +75,50 @@
         </header>
         <form method="get" action="photographer.html" id="form">
           <div>
-            <label for="prenom" id="First-name">Prénom</label>
-            <input
+            <div class="formData" data-error-visible="" data-error="veuillez entrer au minimum 2 caractères.">
+              <label for="prenom" id="First-name">Prénom</label>
+              <input
+              class="text-control"
               id="prenom"
               type="text"
               aria-labelledby="First-name"
-              required
               aria-required="true"
-            />
+              />
+            </div>
 
-            <label for="nom" id="Last-name">Nom</label>
-            <input
+            <div class="formData" data-error-visible="" data-error="veuillez entrer au minimum 2 caractères.">
+              <label for="nom" id="Last-name">Nom</label>
+              <input
+              class="text-control"
               id="nom"
               type="text"
               aria-labelledby="Last-name"
-              required
               aria-required="true"
-            />
+              />
+            </div>
 
-            <label for="email" id="Email">Email</label>
-            <input
+            <div class="formData" data-error-visible="" data-error="veuillez entrer une adresse email valide.">
+              <label for="email" id="Email">Email</label>
+              <input
+              class="text-control"
               id="email"
               type="email"
               aria-labelledby="Email"
-              required
               aria-required="true"
-            />
+              />
+            </div>
 
-            <label for="message" id="Your-message">Votre message</label>
-            <textarea
+            <div class="formData" data-error-visible="" data-error="veuillez entrer un message">
+              <label for="message" id="Your-message">Votre message</label>
+              <textarea
               id="message"
+              class="text-control"
               cols="101"
               rows="10"
               aria-labelledby="Your-message"
-              required
               aria-required="true"
-            ></textarea>
+              ></textarea>
+            </div>
           </div>
           <button
             class="contact_button"

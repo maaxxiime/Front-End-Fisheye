@@ -139,7 +139,7 @@
   width: 100%;
   height: 100%;
   top: 0;
-  padding-top: 35px;
+  padding-top: 70px;
   background-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -153,13 +153,13 @@
   justify-content: space-between;
   padding: 0 35px 35px 35px;
   margin: auto;
-  height: 90vh;
+  height: 80vh;
 }
 
 .modal header {
   justify-content: space-between;
   width: 100%;
-  height: 200px;
+  height: 150px;
 }
 
 .modal header img {
@@ -167,7 +167,7 @@
 }
 
 .modal header h2 {
-  font-size: 64px;
+  font-size: 50px;
   font-weight: normal;
   margin: 0;
   padding: 0;
@@ -178,7 +178,6 @@
   flex-direction: column;
 }
 
-
 form {
   display: flex;
   width: 100%;
@@ -188,7 +187,7 @@ form {
 
 form label {
   color: #312e2e;
-  font-size: 36px;
+  font-size: 25px;
 }
 
 form div {
@@ -196,21 +195,21 @@ form div {
   flex-direction: column;
   width: 100%;
   align-items: self-start;
-  margin-bottom: 26px;
+  margin-bottom: 15px;
 }
 
 form input {
   width: 100%;
-  height: 68px;
+  height: 50px;
   border: none;
   border-radius: 5px;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 form textarea {
-  font-size: 30px;
+  font-size: 20px;
   width: 100%;
-  height: 160px;
+  height: 140px;
 }
 
 .photograph-infos {
@@ -294,4 +293,23 @@ width: 22px;
   position: absolute;
   bottom: 0;
   left: 15%;
+}
+
+.formData[data-error]::after {
+  content: attr(data-error);
+  font-size: 1.3rem;
+  color: #c70014;
+  display: block;
+  margin-top: 13px;
+  margin-bottom: 7px;
+  text-align: right;
+  line-height: 0.3;
+  opacity: 0;
+  transition: 0.3s;
+}
+.formData[data-error-visible="true"]::after {
+  opacity: 1;
+}
+.formData[data-error-visible="true"] .text-control {
+  border: 2px solid #a11b1b;
 }
