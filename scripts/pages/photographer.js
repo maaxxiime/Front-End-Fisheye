@@ -87,10 +87,13 @@ async function userCardDom() {
 
   gallery.addEventListener("click", function(e) {
     const modalSlider = document.getElementById("modal-slider");
+
+    // si click sur img ou video, ouvre le slider
     if (e.target.nodeName == "IMG" || e.target.nodeName == "VIDEO") {
       modalSlider.style.display = "flex";
     }
 
+    // créer des tableaux vide pour les images, video et titre (alt)
     const dataImage = [];
     const dataVideo = [];
     const dataAlt = [];
@@ -100,9 +103,21 @@ async function userCardDom() {
       dataAlt.push(media.title);
     });
 
+    // changer méthode pour retirer les mp4 ou jpg car l'ordre change selon le tri (popularité, date, titre)
+
+    // retire le dernier index du tableau (undefined) car .mp4
+    dataImage.pop()
+    
+    // retire tous les premiers élément du tableau .jpg (undefined) pour garder que le .mp4
+    dataVideo.splice(0, dataVideo.length -1)
+
+    // join les deux tableau pour en faire qu'un seul
+    const fullDataArray = dataImage.concat(dataVideo);
+
     // variable global avec la position (index) de l'element clické
     const dataName = e.target.src.split("/")[6];
-    let index = dataImage.indexOf(dataName);
+    let index = fullDataArray.indexOf(dataName);
+
     let newSrc = null
 
     const src = e.target.src;
@@ -113,13 +128,13 @@ async function userCardDom() {
     title.textContent = alt;
     container.appendChild(title);
 
+    var img = document.createElement("img");
+    var video = document.createElement("video");
     if (e.target.nodeName == "IMG") {
-      var img = document.createElement("img");
       img.setAttribute("src", src);
       container.appendChild(img);
     }
     if (e.target.nodeName == "VIDEO") {
-      var video = document.createElement("video");
       video.setAttribute("src", src);
       video.setAttribute("autoplay", true)
       video.setAttribute("controls", true)
@@ -134,14 +149,26 @@ async function userCardDom() {
 
     const previous = document.getElementById("previous");
     previous.addEventListener("click", function previous(){
+      container.innerHTML = "";
       index -= 1;
       if(index === -1){
-        index = dataImage.length -1;
+        index = fullDataArray.length -1;
       }
-      newSrc = dataImage[index];
-      container.innerHTML = "";
-      img.setAttribute("src", `./assets/Sample/${name}/${newSrc}`);
-      container.appendChild(img);
+      newSrc = fullDataArray[index];
+      console.log(newSrc)
+      
+      if(newSrc.split(".")[1] === "jpg"){
+        img.setAttribute("src", `./assets/Sample/${name}/${newSrc}`);
+        container.appendChild(img);
+      } 
+
+      if(newSrc.split(".")[1] === "mp4") {
+        video.setAttribute("src", `./assets/Sample/${name}/${newSrc}`);
+        video.setAttribute("autoplay", true)
+        video.setAttribute("controls", true)
+        container.appendChild(video);
+      }
+
       title.textContent = "";
       title.textContent = dataAlt[index];
       container.appendChild(title);
@@ -149,14 +176,25 @@ async function userCardDom() {
 
     const next = document.getElementById("next");
     next.addEventListener("click", function next(){
+      container.innerHTML = "";
       index += 1;
-      if(index === dataImage.length){
+      if(index === fullDataArray.length){
         index = 0
       }
-      newSrc = dataImage[index];
-      container.innerHTML = "";
-      img.setAttribute("src", `./assets/Sample/${name}/${newSrc}`);
-      container.appendChild(img);
+      newSrc = fullDataArray[index];
+
+      if(newSrc.split(".")[1] === "jpg"){
+        img.setAttribute("src", `./assets/Sample/${name}/${newSrc}`);
+        container.appendChild(img);
+      } 
+
+      if(newSrc.split(".")[1] === "mp4") {
+        video.setAttribute("src", `./assets/Sample/${name}/${newSrc}`);
+        video.setAttribute("autoplay", true)
+        video.setAttribute("controls", true)
+        container.appendChild(video);
+      }
+
       title.textContent = "";
       title.textContent = dataAlt[index];
       container.appendChild(title);
