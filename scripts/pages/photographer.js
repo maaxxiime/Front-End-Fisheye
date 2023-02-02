@@ -85,7 +85,7 @@ async function userCardDom() {
     }
   }
 
-  gallery.addEventListener("click", function(e) {
+  gallery.addEventListener("click", function (e) {
     const modalSlider = document.getElementById("modal-slider");
 
     // si click sur img ou video, ouvre le slider
@@ -97,28 +97,37 @@ async function userCardDom() {
     const dataImage = [];
     const dataVideo = [];
     const dataAlt = [];
+
     medias.forEach((media) => {
       dataImage.push(media.image);
       dataVideo.push(media.video);
       dataAlt.push(media.title);
     });
 
-    // changer méthode pour retirer les mp4 ou jpg car l'ordre change selon le tri (popularité, date, titre)
 
-    // retire le dernier index du tableau (undefined) car .mp4
-    dataImage.pop()
-    
-    // retire tous les premiers élément du tableau .jpg (undefined) pour garder que le .mp4
-    dataVideo.splice(0, dataVideo.length -1)
+    function removeValue(value, index, arr) {
+      // si une valeur d'un tableau correspond à undefined
+      if (value === undefined) {
+        // retire cette valeur du tableau d'origine
+        arr.splice(index, dataImage.length);
+        return true;
+      }
+      return false;
+    }
+
+    // passe la function removeValue à une methode filter sur les tableaux pour enlever les "undefined"
+    const x = dataImage.filter(removeValue);
+    const y = dataVideo.filter(removeValue);
 
     // join les deux tableau pour en faire qu'un seul
     const fullDataArray = dataImage.concat(dataVideo);
+    console.log(fullDataArray)
 
     // variable global avec la position (index) de l'element clické
     const dataName = e.target.src.split("/")[6];
     let index = fullDataArray.indexOf(dataName);
 
-    let newSrc = null
+    let newSrc = null;
 
     const src = e.target.src;
     const container = document.getElementById("container-slider");
@@ -136,8 +145,8 @@ async function userCardDom() {
     }
     if (e.target.nodeName == "VIDEO") {
       video.setAttribute("src", src);
-      video.setAttribute("autoplay", true)
-      video.setAttribute("controls", true)
+      video.setAttribute("autoplay", true);
+      video.setAttribute("controls", true);
       container.appendChild(video);
     }
 
@@ -148,62 +157,58 @@ async function userCardDom() {
     });
 
     const previous = document.getElementById("previous");
-    previous.addEventListener("click", function previous(){
+    previous.addEventListener("click", function previous() {
       container.innerHTML = "";
       index -= 1;
-      if(index === -1){
-        index = fullDataArray.length -1;
+      if (index === -1) {
+        index = fullDataArray.length - 1;
       }
       newSrc = fullDataArray[index];
-      console.log(newSrc)
-      
-      if(newSrc.split(".")[1] === "jpg"){
+      console.log(newSrc);
+
+      if (newSrc.split(".")[1] === "jpg") {
         img.setAttribute("src", `./assets/Sample/${name}/${newSrc}`);
         container.appendChild(img);
-      } 
+      }
 
-      if(newSrc.split(".")[1] === "mp4") {
+      if (newSrc.split(".")[1] === "mp4") {
         video.setAttribute("src", `./assets/Sample/${name}/${newSrc}`);
-        video.setAttribute("autoplay", true)
-        video.setAttribute("controls", true)
+        video.setAttribute("autoplay", true);
+        video.setAttribute("controls", true);
         container.appendChild(video);
       }
 
       title.textContent = "";
       title.textContent = dataAlt[index];
       container.appendChild(title);
-    })
+    });
 
     const next = document.getElementById("next");
-    next.addEventListener("click", function next(){
+    next.addEventListener("click", function next() {
       container.innerHTML = "";
       index += 1;
-      if(index === fullDataArray.length){
-        index = 0
+      if (index === fullDataArray.length) {
+        index = 0;
       }
       newSrc = fullDataArray[index];
 
-      if(newSrc.split(".")[1] === "jpg"){
+      if (newSrc.split(".")[1] === "jpg") {
         img.setAttribute("src", `./assets/Sample/${name}/${newSrc}`);
         container.appendChild(img);
-      } 
+      }
 
-      if(newSrc.split(".")[1] === "mp4") {
+      if (newSrc.split(".")[1] === "mp4") {
         video.setAttribute("src", `./assets/Sample/${name}/${newSrc}`);
-        video.setAttribute("autoplay", true)
-        video.setAttribute("controls", true)
+        video.setAttribute("autoplay", true);
+        video.setAttribute("controls", true);
         container.appendChild(video);
       }
 
       title.textContent = "";
       title.textContent = dataAlt[index];
       container.appendChild(title);
-    })
+    });
   });
-  
-  
-  
-
 
   await getUser();
   displayMedia();
