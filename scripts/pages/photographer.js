@@ -89,9 +89,10 @@ async function userCardDom() {
     const modalSlider = document.getElementById("modal-slider");
 
     // si click sur img ou video, ouvre le slider
-    if (e.target.nodeName == "IMG" || e.target.nodeName == "VIDEO") {
+    if( (e.target.nodeName == "IMG" && e.target.className == "photograph-image") || e.target.nodeName == "VIDEO") {
       modalSlider.style.display = "flex";
     }
+    console.log(e.target)
 
     // créer des tableaux vide pour les images, video et titre (alt)
     const dataImage = [];
@@ -103,7 +104,6 @@ async function userCardDom() {
       dataVideo.push(media.video);
       dataAlt.push(media.title);
     });
-
 
     function removeValue(value, index, arr) {
       // si une valeur d'un tableau correspond à undefined
@@ -121,7 +121,6 @@ async function userCardDom() {
 
     // join les deux tableau pour en faire qu'un seul
     const fullDataArray = dataImage.concat(dataVideo);
-    console.log(fullDataArray)
 
     // variable global avec la position (index) de l'element clické
     const dataName = e.target.src.split("/")[6];
@@ -137,8 +136,8 @@ async function userCardDom() {
     title.textContent = alt;
     container.appendChild(title);
 
-    var img = document.createElement("img");
-    var video = document.createElement("video");
+    let img = document.createElement("img");
+    let video = document.createElement("video");
     if (e.target.nodeName == "IMG") {
       img.setAttribute("src", src);
       container.appendChild(img);
@@ -164,7 +163,6 @@ async function userCardDom() {
         index = fullDataArray.length - 1;
       }
       newSrc = fullDataArray[index];
-      console.log(newSrc);
 
       if (newSrc.split(".")[1] === "jpg") {
         img.setAttribute("src", `./assets/Sample/${name}/${newSrc}`);
