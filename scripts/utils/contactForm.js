@@ -93,6 +93,8 @@ form.addEventListener("submit", function sendForm(e) {
     };
 
     form.reset();
+    modal.style.display = "none";
+
   } else {
     res = "erreur";
   }

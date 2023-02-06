@@ -89,10 +89,14 @@ async function userCardDom() {
     const modalSlider = document.getElementById("modal-slider");
 
     // si click sur img ou video, ouvre le slider
-    if( (e.target.nodeName == "IMG" && e.target.className == "photograph-image") || e.target.nodeName == "VIDEO") {
+    if (
+      (e.target.nodeName == "IMG" &&
+        e.target.className == "photograph-image") ||
+      e.target.nodeName == "VIDEO"
+    ) {
       modalSlider.style.display = "flex";
     }
-    console.log(e.target)
+    console.log(e.target);
 
     // créer des tableaux vide pour les images, video et titre (alt)
     const dataImage = [];
@@ -150,13 +154,27 @@ async function userCardDom() {
     }
 
     const btnCloseModalSlider = document.getElementById("close");
-    btnCloseModalSlider.addEventListener("click", function close() {
+    btnCloseModalSlider.addEventListener("click", closeSlider);
+    btnCloseModalSlider.addEventListener("keypress", (e) => {
+      const keyName = e.key;
+      if (keyName === "Enter") {
+        closeSlider();
+      }
+    });
+    function closeSlider() {
       modalSlider.style.display = "none";
       container.innerHTML = "";
-    });
+    }
 
     const previous = document.getElementById("previous");
-    previous.addEventListener("click", function previous() {
+    previous.addEventListener("click", previousSlider);
+    previous.addEventListener("keypress", (e) => {
+      const keyName = e.key;
+      if (keyName === "Enter") {
+        previousSlider();
+      }
+    });
+    function previousSlider() {
       container.innerHTML = "";
       index -= 1;
       if (index === -1) {
@@ -179,10 +197,17 @@ async function userCardDom() {
       title.textContent = "";
       title.textContent = dataAlt[index];
       container.appendChild(title);
-    });
+    }
 
     const next = document.getElementById("next");
-    next.addEventListener("click", function next() {
+    next.addEventListener("click", nextSlider);
+    next.addEventListener("keypress", (e) => {
+      const keyName = e.key;
+      if (keyName === "Enter") {
+        nextSlider();
+      }
+    });
+    function nextSlider() {
       container.innerHTML = "";
       index += 1;
       if (index === fullDataArray.length) {
@@ -205,7 +230,7 @@ async function userCardDom() {
       title.textContent = "";
       title.textContent = dataAlt[index];
       container.appendChild(title);
-    });
+    }
   });
 
   await getUser();
