@@ -85,10 +85,16 @@ async function userCardDom() {
     }
   }
 
-  gallery.addEventListener("click", function (e) {
+  gallery.addEventListener("click", slider);
+  gallery.addEventListener("keypress", (e) => {
+    const keyName = e.key;
+    if (keyName === "Enter") {
+      slider(e);       
+    }
+  });
+  function slider(e) {
     const modalSlider = document.getElementById("modal-slider");
-
-    // si click sur img ou video, ouvre le slider
+    // si e.target == img ou video, ouvre le slider
     if (
       (e.target.nodeName == "IMG" &&
         e.target.className == "photograph-image") ||
@@ -231,7 +237,7 @@ async function userCardDom() {
       title.textContent = dataAlt[index];
       container.appendChild(title);
     }
-  });
+  };
 
   await getUser();
   displayMedia();

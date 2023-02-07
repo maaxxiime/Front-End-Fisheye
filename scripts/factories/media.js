@@ -67,8 +67,8 @@ function image(data) {
     const likesCount = document.createElement("p");
     const heart = document.createElement("img");
 
-    article.setAttribute("tabindex", "0");
     divBottom.setAttribute("class", "div-bottom");
+    img.setAttribute("tabindex", "0");
     img.setAttribute("src", `assets/Sample/${params}/${image}`);
     img.setAttribute("class", "photograph-image");
     img.setAttribute("alt", title);
@@ -115,9 +115,9 @@ function video(data) {
     const likesCount = document.createElement("p");
     const heart = document.createElement("img");
 
-    article.setAttribute("tabindex", "0");
     divBottom.setAttribute("class", "div-bottom");
     videos.setAttribute("src", `assets/Sample/${params}/${video}`);
+    videos.setAttribute("tabindex", "0");
     videos.setAttribute("controls", true);
     videos.setAttribute("alt", title);
     videos.setAttribute("class", "photograph-video");
