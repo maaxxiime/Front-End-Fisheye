@@ -76,6 +76,7 @@ function image(data) {
     titleImage.textContent = title;
     likesCount.textContent = likes;
     heart.setAttribute("src", "./assets/icons/heart-solid.svg");
+    heart.setAttribute("tabindex", "0");
     heart.setAttribute("class", "heart-image");
     heart.setAttribute("alt", "likes");
 
@@ -86,8 +87,14 @@ function image(data) {
     divBottom.appendChild(heart);
 
     let maxLike = false
-    heart.addEventListener("click", function like() {
-
+    heart.addEventListener("click", like);
+    heart.addEventListener("keypress", (e) => {
+      const keyName = e.key;
+      if (keyName === "Enter") {
+        like();
+      }
+    });
+    function like() {
       if(maxLike === false) {
         likes += 1;
         likesCount.textContent = likes;
@@ -97,7 +104,7 @@ function image(data) {
       } else if (maxLike === true) {
         console.log("déjà liké")
       }
-    });
+    }
     return article;
   }
   return { photographerId, id, title, image, likes, date, price, display };
@@ -125,7 +132,9 @@ function video(data) {
     titleImage.textContent = title;
     likesCount.textContent = likes;
     heart.setAttribute("src", "./assets/icons/heart-solid.svg");
+    heart.setAttribute("tabindex", "0");
     heart.setAttribute("class", "heart-image");
+    heart.setAttribute("alt", "likes");
 
     article.appendChild(videos);
     article.appendChild(divBottom);
@@ -134,19 +143,24 @@ function video(data) {
     divBottom.appendChild(heart);
 
     let maxLike = false;
-    heart.addEventListener("click", function like() {
-
+    heart.addEventListener("click", like);
+    heart.addEventListener("keypress", (e) => {
+      const keyName = e.key;
+      if (keyName === "Enter") {
+        like();
+      }
+    });
+    function like() {
       if(maxLike === false) {
         likes += 1;
         likesCount.textContent = likes;
         totalLike += 1;
         totalLikesCount.textContent = totalLike
         maxLike = true;
-        
       } else if (maxLike === true) {
         console.log("déjà liké")
       }
-    });
+    }
 
     return article;
   }
