@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
@@ -46,17 +46,17 @@
           <option value="titre">Titre</option>
         </select>
 
-        <section id="gallery" class="gallery" role="slider"></section>
+        <section id="gallery" class="gallery"></section>
       </section>
     </main>
 
-    <div class="modal-slider" id="modal-slider">
-      <img tabindex="0" src="./assets/icons/chevron-left-solid.svg" alt="previous image" class="previous button" id="previous"></img>
+    <div class="modal-slider" id="modal-slider" role="slider" aria-label="image closeup view">
+      <img tabindex="0" src="./assets/icons/chevron-left-solid.svg" alt="Previous image" class="previous button" id="previous"></img>
       <div class="container-slider" id="container-slider">
         <!-- soit img soit vidéo ici -->
       </div>
-      <img tabindex="0" src="./assets/icons/chevron-right-solid.svg" alt="next image" class="next button" id="next"></img>
-      <img tabindex="0" src="./assets/icons/xmark-solid.svg" alt="close" class="close button" id="close"></img>
+      <img tabindex="0" src="./assets/icons/chevron-right-solid.svg" alt="Next image" class="next button" id="next"></img>
+      <img tabindex="0" src="./assets/icons/xmark-solid.svg" alt="Close dialog" class="close button" id="close"></img>
     </div>
 
     <div id="contact_modal" class="contact_modal" role="dialog">
