@@ -8,9 +8,24 @@ const params = window.location.href
   .replace("%20", " ");
 modal.setAttribute("aria-label", `contact me ${params}`);
 
+const img = document.getElementsByClassName('photograph-image');
+const videoo = document.getElementsByClassName('photograph-video');
+const heart = document.getElementsByClassName('heart-image');
+
+let arrayImg = []
+let arrayVideo = []
+let arrayHeart = []
+arrayImg.push(img)
+
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
+  arrayImg.forEach((elem) => {
+    console.log(elem)
+    // elem.setAttribute("tabindex",  -1);
+  })
+  // vide.setAttribute("tabindex", -1);
+  // heart.setAttribute("tabindex", -1);
 }
 
 const closeBtn = document.getElementById("close-btn");
