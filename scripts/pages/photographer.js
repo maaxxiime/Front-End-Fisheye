@@ -89,11 +89,26 @@ async function userCardDom() {
   gallery.addEventListener("keypress", (e) => {
     const keyName = e.key;
     if (keyName === "Enter") {
-      slider(e);       
+      slider(e);
     }
   });
   function slider(e) {
     const modalSlider = document.getElementById("modal-slider");
+
+    // cette suite sert pour récupérer tous les éléments à mettre en tabindex 0 / -1 selon la situation
+    const imgs = document.getElementsByClassName("photograph-image");
+    const videos = document.getElementsByClassName("photograph-video");
+    const heart = document.getElementsByClassName("heart-image");
+    const filter = document.getElementById("filter");
+    const contact = document.getElementById("contact-me");
+    const dataImg = [];
+    const dataVideos = [];
+    const dataHeart = [];
+    dataImg.push(imgs);
+    dataVideos.push(videos);
+    dataHeart.push(heart);
+
+
     // si e.target == img ou video, ouvre le slider
     if (
       (e.target.nodeName == "IMG" &&
@@ -101,6 +116,18 @@ async function userCardDom() {
       e.target.nodeName == "VIDEO"
     ) {
       modalSlider.style.display = "flex";
+
+      for(let i = 0 ; i < dataImg[0].length ; i++) {
+        imgs[i].setAttribute("tabindex", -1);
+      }
+      for(let i = 0 ; i < dataVideos[0].length ; i++) {
+        videos[i].setAttribute("tabindex", -1);
+      }
+      for(let i = 0 ; i < dataHeart[0].length ; i++) {
+        heart[i].setAttribute("tabindex", -1);
+      }
+      filter.setAttribute("tabindex", -1);
+      contact.setAttribute("tabindex", -1);
     }
     console.log(e.target);
 
@@ -170,6 +197,17 @@ async function userCardDom() {
     function closeSlider() {
       modalSlider.style.display = "none";
       container.innerHTML = "";
+      for(let i = 0 ; i < dataImg[0].length ; i++) {
+        imgs[i].setAttribute("tabindex", 0);
+      }
+      for(let i = 0 ; i < dataVideos[0].length ; i++) {
+        videos[i].setAttribute("tabindex", 0);
+      }
+      for(let i = 0 ; i < dataHeart[0].length ; i++) {
+        heart[i].setAttribute("tabindex", 0);
+      }
+      filter.setAttribute("tabindex", 0);
+      contact.setAttribute("tabindex", 0);
     }
 
     const previous = document.getElementById("previous");
@@ -237,7 +275,7 @@ async function userCardDom() {
       title.textContent = dataAlt[index];
       container.appendChild(title);
     }
-  };
+  }
 
   await getUser();
   displayMedia();

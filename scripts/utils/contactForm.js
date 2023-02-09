@@ -1,4 +1,3 @@
-// Accessibilité
 const modal = document.getElementById("contact_modal");
 const formData = document.querySelectorAll(".formData");
 const params = window.location.href
@@ -8,39 +7,59 @@ const params = window.location.href
   .replace("%20", " ");
 modal.setAttribute("aria-label", `contact me ${params}`);
 
+  // cette suite sert pour récupérer tous les éléments à mettre en tabindex 0 / -1 selon la situation
 const img = document.getElementsByClassName('photograph-image');
-const videoo = document.getElementsByClassName('photograph-video');
+const videos = document.getElementsByClassName('photograph-video');
 const heart = document.getElementsByClassName('heart-image');
+const filter = document.getElementById('filter');
+const contact = document.getElementById('contact-me');
+const dataImg = []
+const dataVideos = []
+const dataHeart = []
+dataImg.push(img)
+dataVideos.push(videos)
+dataHeart.push(heart)
 
-let arrayImg = []
-let arrayVideo = []
-let arrayHeart = []
-arrayImg.push(img)
 
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
-  arrayImg.forEach((elem) => {
-    console.log(elem)
-    // elem.setAttribute("tabindex",  -1);
-  })
-  // vide.setAttribute("tabindex", -1);
-  // heart.setAttribute("tabindex", -1);
+  for(let i = 0 ; i < dataImg[0].length ; i++) {
+    img[i].setAttribute("tabindex", -1);
+  }
+  for(let i = 0 ; i < dataVideos[0].length ; i++) {
+    videos[i].setAttribute("tabindex", -1);
+  }
+  for(let i = 0 ; i < dataHeart[0].length ; i++) {
+    heart[i].setAttribute("tabindex", -1);
+  }
+  filter.setAttribute("tabindex", -1);
+  contact.setAttribute("tabindex", -1);
 }
 
 const closeBtn = document.getElementById("close-btn");
-closeBtn.addEventListener("click", function closeModal() {
-  const modal = document.getElementById("contact_modal");
-  modal.style.display = "none";
-});
-
+closeBtn.addEventListener("click", closeModal);
 closeBtn.addEventListener("keypress", (e) => {
   const keyName = e.key;
   if (keyName === "Enter") {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
+    closeModal()
   }
 });
+function closeModal() {
+  const modal = document.getElementById("contact_modal");
+  modal.style.display = "none";
+  for(let i = 0 ; i < dataImg[0].length ; i++) {
+    img[i].setAttribute("tabindex", 0);
+  }
+  for(let i = 0 ; i < dataVideos[0].length ; i++) {
+    videos[i].setAttribute("tabindex", 0);
+  }
+  for(let i = 0 ; i < dataHeart[0].length ; i++) {
+    heart[i].setAttribute("tabindex", 0);
+  }
+  filter.setAttribute("tabindex", 0);
+  contact.setAttribute("tabindex", 0);
+}
 
 const form = document.getElementById("form");
 form.addEventListener("submit", function sendForm(e) {
