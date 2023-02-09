@@ -79,6 +79,7 @@ function image(data) {
     heart.setAttribute("tabindex", "0");
     heart.setAttribute("class", "heart-image");
     heart.setAttribute("alt", "likes");
+    heart.setAttribute("aria-label", "likes");
 
     article.appendChild(img);
     article.appendChild(divBottom);
