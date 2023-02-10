@@ -7,30 +7,29 @@ const params = window.location.href
   .replace("%20", " ");
 modal.setAttribute("aria-label", `contact me ${params}`);
 
-  // cette suite sert pour récupérer tous les éléments à mettre en tabindex 0 / -1 selon la situation
-const img = document.getElementsByClassName('photograph-image');
-const videos = document.getElementsByClassName('photograph-video');
-const heart = document.getElementsByClassName('heart-image');
-const filter = document.getElementById('filter');
-const contact = document.getElementById('contact-me');
-const dataImg = []
-const dataVideos = []
-const dataHeart = []
-dataImg.push(img)
-dataVideos.push(videos)
-dataHeart.push(heart)
-
+// cette suite sert pour récupérer tous les éléments à mettre en tabindex 0 / -1 selon la situation
+const img = document.getElementsByClassName("photograph-image");
+const videos = document.getElementsByClassName("photograph-video");
+const heart = document.getElementsByClassName("heart-image");
+const filter = document.getElementById("filter");
+const contact = document.getElementById("contact-me");
+const dataImg = [];
+const dataVideos = [];
+const dataHeart = [];
+dataImg.push(img);
+dataVideos.push(videos);
+dataHeart.push(heart);
 
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
-  for(let i = 0 ; i < dataImg[0].length ; i++) {
+  for (let i = 0; i < dataImg[0].length; i++) {
     img[i].setAttribute("tabindex", -1);
   }
-  for(let i = 0 ; i < dataVideos[0].length ; i++) {
+  for (let i = 0; i < dataVideos[0].length; i++) {
     videos[i].setAttribute("tabindex", -1);
   }
-  for(let i = 0 ; i < dataHeart[0].length ; i++) {
+  for (let i = 0; i < dataHeart[0].length; i++) {
     heart[i].setAttribute("tabindex", -1);
   }
   filter.setAttribute("tabindex", -1);
@@ -42,19 +41,19 @@ closeBtn.addEventListener("click", closeModal);
 closeBtn.addEventListener("keypress", (e) => {
   const keyName = e.key;
   if (keyName === "Enter") {
-    closeModal()
+    closeModal();
   }
 });
 function closeModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "none";
-  for(let i = 0 ; i < dataImg[0].length ; i++) {
+  for (let i = 0; i < dataImg[0].length; i++) {
     img[i].setAttribute("tabindex", 0);
   }
-  for(let i = 0 ; i < dataVideos[0].length ; i++) {
+  for (let i = 0; i < dataVideos[0].length; i++) {
     videos[i].setAttribute("tabindex", 0);
   }
-  for(let i = 0 ; i < dataHeart[0].length ; i++) {
+  for (let i = 0; i < dataHeart[0].length; i++) {
     heart[i].setAttribute("tabindex", 0);
   }
   filter.setAttribute("tabindex", 0);
@@ -112,7 +111,6 @@ form.addEventListener("submit", function sendForm(e) {
     messageIsValide = true;
   }
 
-
   if (
     prenomIsValide === true &&
     nomIsValide === true &&
@@ -128,7 +126,6 @@ form.addEventListener("submit", function sendForm(e) {
 
     form.reset();
     modal.style.display = "none";
-
   } else {
     res = "erreur";
   }

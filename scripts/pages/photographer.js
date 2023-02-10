@@ -17,9 +17,7 @@ async function userCardDom() {
     // fetch la data
     const data = await fetch("../data/photographers.json");
     const resultat = await data.json();
-    // const photographers = resultat.photographers;
     const mediasData = resultat.media;
-    // user = photographers.filter((photographer) => photographer.id === ID)[0];
     const mediasUser = mediasData.filter(
       (media) => media.photographerId === ID
     );
@@ -108,7 +106,6 @@ async function userCardDom() {
     dataVideos.push(videos);
     dataHeart.push(heart);
 
-
     // si e.target == img ou video, ouvre le slider
     if (
       (e.target.nodeName == "IMG" &&
@@ -117,13 +114,13 @@ async function userCardDom() {
     ) {
       modalSlider.style.display = "flex";
 
-      for(let i = 0 ; i < dataImg[0].length ; i++) {
+      for (let i = 0; i < dataImg[0].length; i++) {
         imgs[i].setAttribute("tabindex", -1);
       }
-      for(let i = 0 ; i < dataVideos[0].length ; i++) {
+      for (let i = 0; i < dataVideos[0].length; i++) {
         videos[i].setAttribute("tabindex", -1);
       }
-      for(let i = 0 ; i < dataHeart[0].length ; i++) {
+      for (let i = 0; i < dataHeart[0].length; i++) {
         heart[i].setAttribute("tabindex", -1);
       }
       filter.setAttribute("tabindex", -1);
@@ -197,13 +194,13 @@ async function userCardDom() {
     function closeSlider() {
       modalSlider.style.display = "none";
       container.innerHTML = "";
-      for(let i = 0 ; i < dataImg[0].length ; i++) {
+      for (let i = 0; i < dataImg[0].length; i++) {
         imgs[i].setAttribute("tabindex", 0);
       }
-      for(let i = 0 ; i < dataVideos[0].length ; i++) {
+      for (let i = 0; i < dataVideos[0].length; i++) {
         videos[i].setAttribute("tabindex", 0);
       }
-      for(let i = 0 ; i < dataHeart[0].length ; i++) {
+      for (let i = 0; i < dataHeart[0].length; i++) {
         heart[i].setAttribute("tabindex", 0);
       }
       filter.setAttribute("tabindex", 0);
