@@ -1,4 +1,3 @@
-// Balises sémentiques Header, Nav, Main, Section, Article, Aside, Footer
 function photographerFactory(data) {
   const { name, id, city, country, tagline, price, portrait } = data;
 

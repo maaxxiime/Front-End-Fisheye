@@ -1,1 +1,2 @@
+# permet de ne pas envoyer les node modules dans le repo github
 node_modules
