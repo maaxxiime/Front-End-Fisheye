@@ -21,7 +21,7 @@ async function userCardDom() {
     );
 
     mediasUser.forEach((media) => {
-      let _media = factoryMedia(media);
+      const _media = factoryMedia(media);
       medias.push(_media);
     });
   }
