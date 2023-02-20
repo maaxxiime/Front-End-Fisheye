@@ -125,8 +125,9 @@ async function userCardDom() {
     if (
       (e.target.nodeName == "IMG" &&
         e.target.className == "photograph-image") ||
-      e.target.nodeName == "VIDEO"
-    ) {
+      (e.target.nodeName == "VIDEO" &&
+        e.target.className == "photograph-video")) 
+   {
       modalSlider.style.display = "flex";
 
       for(let i = 0 ; i < dataImg[0].length ; i++) {
@@ -140,7 +141,6 @@ async function userCardDom() {
       }
       filter.setAttribute("tabindex", -1);
       contact.setAttribute("tabindex", -1);
-    }
 
     // créer des tableaux vide pour les images, video et titre (alt)
     const dataImage = [];
@@ -310,6 +310,7 @@ async function userCardDom() {
       title.textContent = dataAlt[index];
       container.appendChild(title);
     }
+  }
   }
 
   await getUser();
