@@ -96,6 +96,7 @@
 .gallery {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .gallery article{
@@ -336,4 +337,13 @@ width: 22px;
 }
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #a11b1b;
+}
+
+select {
+  position: relative;
+  background-color: #901C1C;
+  height: 50px;
+  padding: 10px;
+  border-radius: 8px;
+  color:white;
 }

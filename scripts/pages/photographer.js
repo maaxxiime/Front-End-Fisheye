@@ -28,6 +28,16 @@ async function userCardDom() {
 
   function displayMedia() {
     const gallery = document.getElementById("gallery");
+    medias.sort((a, b) => b.likes - a.likes);
+    medias.forEach((media) => {
+      // lance la fonction display dans le media factory pour chaque media
+      const resultat = media.display();
+      // appen child tout ce qui est créé de la fonction display dans gallery
+      gallery.appendChild(resultat);
+    });
+  }
+  function displayMediaSort() {
+    const gallery = document.getElementById("gallery");
     medias.forEach((media) => {
       // lance la fonction display dans le media factory pour chaque media
       const resultat = media.display();
@@ -69,18 +79,18 @@ async function userCardDom() {
     divCollumn.appendChild(tagline);
     photographHeader.appendChild(img);
   }
-
+  
   // récupére le select
   const select = document.getElementById("filter");
   // créer un eventListener sur le select et si il y a un changement, lance la fonction filter
   select.addEventListener("change", function filter(e) {
-    const critere = e.target.value;
+    const critere = e.target.value
     // lance la fonction filterByCritere et passe en paramètre le critere
     filterByCritere(critere);
     const gallery = document.getElementById("gallery");
     // vide la gallery puis la reconstruit selon la fonction filterByCritere(critere)
     gallery.innerHTML = "";
-    displayMedia();
+    displayMediaSort();
   });
 
   function filterByCritere(critere) {
@@ -154,23 +164,15 @@ async function userCardDom() {
       dataAlt.push(media.title);
     });
 
-    function removeValue(value, index, arr) {
-      // si une valeur d'un tableau correspond à undefined
-      if (value === undefined) {
-        // retire cette valeur du tableau d'origine
-        arr.splice(index, dataImage.length);
-        return true;
-      }
-      return false;
-    }
-
-    // passe la function removeValue à une methode filter sur les tableaux pour enlever les "undefined"
-    const x = dataImage.filter(removeValue);
-    const y = dataVideo.filter(removeValue);
+    const filteredDataImage = dataImage.filter(function(x) {
+      return x !== undefined;
+    });
+    const filteredDataVideo = dataVideo.filter(function(x) {
+      return x !== undefined;
+    });
 
     // join les deux tableaux pour en faire qu'un seul
-    const fullDataArray = dataImage.concat(dataVideo);
-
+    const fullDataArray = filteredDataVideo.concat(filteredDataImage);
     // sert à récupérer le nom de la data (ex: sport_water_tunnel.jpg)
     const dataName = e.target.src.split("/")[6];
     // variable global avec la position (index) de l'element clické
@@ -236,6 +238,7 @@ async function userCardDom() {
       }
     });
     function previousSlider() {
+      console.log(index)
 
       // vide le container
       container.innerHTML = "";
@@ -278,6 +281,7 @@ async function userCardDom() {
       }
     });
     function nextSlider() {
+      console.log(index)
 
       // vide le container
       container.innerHTML = "";
