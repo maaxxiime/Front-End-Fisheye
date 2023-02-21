@@ -163,21 +163,21 @@ async function userCardDom() {
       dataVideo.push(media.video);
       dataAlt.push(media.title);
     });
-
+    
     const filteredDataImage = dataImage.filter(function(x) {
       return x !== undefined;
     });
     const filteredDataVideo = dataVideo.filter(function(x) {
       return x !== undefined;
     });
-
+    
     // join les deux tableaux pour en faire qu'un seul
     const fullDataArray = filteredDataVideo.concat(filteredDataImage);
     // sert à récupérer le nom de la data (ex: sport_water_tunnel.jpg)
     const dataName = e.target.src.split("/")[6];
     // variable global avec la position (index) de l'element clické
     let index = fullDataArray.indexOf(dataName);
-
+    
     let newSrc = null;
 
     const src = e.target.src;
@@ -238,8 +238,7 @@ async function userCardDom() {
       }
     });
     function previousSlider() {
-      console.log(index)
-
+      
       // vide le container
       container.innerHTML = "";
       // baisse l'index
@@ -281,8 +280,7 @@ async function userCardDom() {
       }
     });
     function nextSlider() {
-      console.log(index)
-
+      
       // vide le container
       container.innerHTML = "";
       // monte l'index
